@@ -22,7 +22,8 @@ class CommandList(commands.Cog):
                         value='Allows the user to track their mood and and store it to the database.', inline=True)
         embed.add_field(name='!trackjournal',
                         value='Allows the user to write a journal entry and stores it to the database.', inline=True)
-        embed.add_field(name='!setbio', value='Allows the user to write a bio and stores it to the database.', inline=True)
+        embed.add_field(name='!setbio', value='Allows the user to write a bio and stores it to the database.',
+                        inline=True)
         embed.add_field(name='!getmood/journal/bio',
                         value='Three different commands that retrieve the mood, journal entry, and bio for the user from the database, depending on which one was inputted.',
                         inline=True)
