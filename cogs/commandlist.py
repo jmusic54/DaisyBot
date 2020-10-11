@@ -1,4 +1,3 @@
-import discord
 from discord.ext import commands
 
 
@@ -11,7 +10,7 @@ class CommandList(commands.Cog):
     @commands.command()
     async def commandlist(self, ctx):
         await ctx.send(
-            'Here are the current list of commands that DaisyBot can perform: \n```!serverinfo \n!botinfo \n!commandlist \n!trackmood \n!remindping```')
+            'Here are the current list of commands that DaisyBot can perform: \n```!serverinfo \n!botinfo \n!commandlist \n!trackmood \n!trackjournal \n!setbio```')
 
 
 def setup(client):
