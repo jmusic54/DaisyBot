@@ -23,11 +23,6 @@ class TrackJournal(commands.Cog):
             def inner_check(message):
                 if message.author != author:
                     return False
-                try:
-                    int(message.content)
-                    return True
-                except ValueError:
-                    return False
 
             return inner_check
 
@@ -35,15 +30,15 @@ class TrackJournal(commands.Cog):
         await ctx.send('Hello! This command lets you write a journal entry about your day.')
         await asyncio.sleep(1)
         await ctx.send('What is the date?')
-        dateresponse = await self.client.wait_for('message', check=check, timeout=120)
-        await ctx.send('The date you are storing this entry is ' + dateresponse.content)
+        date_response = await self.client.wait_for('message', check=check, timeout=120)
+        await ctx.send('The date you are storing this entry is ' + date_response.content)
         await asyncio.sleep(1)
         await ctx.send(
             'Input your journal entry.')
-        journalResponse = await self.client.wait_for('message', check=check, timeout=600)
+        journal_response = await self.client.wait_for('message', check=check, timeout=600)
         await ctx.send('Journal entry complete. Let me get that stored for you.')
-        journalInsert = {"_id": ctx.author.id, "date": dateresponse.content, "entry": journalResponse.content}
-        collection.insert_one(journalInsert)
+        journal_insert = {"_id": ctx.author.id, "date": date_response.content, "entry": journal_response.content}
+        collection.insert_one(journal_insert)
 
         await ctx.send("Journal entry stored.")
 

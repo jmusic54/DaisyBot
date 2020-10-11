@@ -23,11 +23,6 @@ class TrackMood(commands.Cog):
             def inner_check(message):
                 if message.author != author:
                     return False
-                try:
-                    int(message.content)
-                    return True
-                except ValueError:
-                    return False
 
             return inner_check
 
@@ -35,33 +30,36 @@ class TrackMood(commands.Cog):
         await ctx.send('Hello! Lets track your mood for the day.')
         await asyncio.sleep(1)
         await ctx.send('What is the date?')
-        dateresponse = await self.client.wait_for('message', check=check, timeout=120)
-        await ctx.send('The date you are storing this entry is ' + dateresponse.content)
+        date_response = await self.client.wait_for('message', check=check, timeout=120)
+        await ctx.send('The date you are storing this entry is ' + date_response.content)
         await asyncio.sleep(1)
         await ctx.send(
             'How was your day? Reply with the number 1, 2, or 3 depending on how your day was. \n1: My day was great. \n2: My day was fine. \n3. My day was not good.')
-        moodresponse = await self.client.wait_for('message', check=check, timeout=60)
-        if moodresponse.clean_content.lower() == '1':
+        mood_response = await self.client.wait_for('message', check=check, timeout=60)
+        if mood_response.clean_content.lower() == '1':
+            mood = "Good"
             await ctx.send('You said your day was great. Let me get that stored for you.')
 
-            moodInsert = {"_id": ctx.author.id, "date": dateresponse.content, "mood": "Good"}
-            collection.insert_one(moodInsert)
+            mood_insert = {"_id": ctx.author.id, "date": date_response.content, "mood": mood}
+            collection.insert_one(mood_insert)
 
             await ctx.send("Mood stored.")
 
-        elif moodresponse.clean_content.lower() == '2':
+        elif mood_response.clean_content.lower() == '2':
+            mood = "Fine"
             await ctx.send('You said your day was fine. Let me get that stored for you.')
 
-            moodInsert = {"_id": ctx.author.id, "date": dateresponse.content, "mood": "Fine"}
-            collection.insert_one(moodInsert)
+            mood_insert = {"_id": ctx.author.id, "date": date_response.content, "mood": mood}
+            collection.insert_one(mood_insert)
 
             await ctx.send("Mood stored.")
 
-        elif moodresponse.clean_content.lower() == '3':
+        elif mood_response.clean_content.lower() == '3':
+            mood = "Not Good"
             await ctx.send('You said your day was not good. Let me get that stored for you.')
 
-            moodInsert = {"_id": ctx.author.id, "date": dateresponse.content, "mood": "Not Good"}
-            collection.insert_one(moodInsert)
+            mood_insert = {"_id": ctx.author.id, "date": date_response.content, "mood": mood}
+            collection.insert_one(mood_insert)
 
             await ctx.send("Mood stored.")
 

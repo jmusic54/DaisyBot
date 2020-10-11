@@ -3,14 +3,14 @@ import mongo
 from discord.ext import commands
 
 
-class SetBio(commands.Cog):
+class GetBio(commands.Cog):
 
     def __init__(self, client):
         self.client = client
 
     # main mood tracking command
     @commands.command()
-    async def setbio(self, ctx):
+    async def getbio(self, ctx):
         # mongoDB setup
         mongo_url = mongo.mongoCredentials
         cluster = MongoClient(mongo_url)
@@ -22,19 +22,18 @@ class SetBio(commands.Cog):
             def inner_check(message):
                 if message.author != author:
                     return False
+                try:
+                    int(message.content)
+                    return True
+                except ValueError:
+                    return False
 
             return inner_check
 
-        await ctx.send('Input your user bio.')
-
-        # take in user response for bio and have bot store data to MongoDB
-        bio_response = await self.client.wait_for('message', check=check, timeout=600)
-        await ctx.send('User bio complete. Let me get that stored for you.')
-        bio_insert = {"_id": ctx.author.id, "entry": bio_response.content}
-        collection.insert_one(bio_insert)
-
-        await ctx.send("Journal entry stored.")
+        # get and print user bio from database
+        for entry in collection.find():
+            await ctx.send(entry)
 
 
 def setup(client):
-    client.add_cog(SetBio(client))
+    client.add_cog(GetBio(client))
