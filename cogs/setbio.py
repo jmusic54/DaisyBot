@@ -8,7 +8,7 @@ class SetBio(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # main mood tracking command
+    # command for setting bio
     @commands.command()
     async def setbio(self, ctx):
         # mongoDB setup

@@ -7,7 +7,7 @@ class BotInfo(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # displays bot info in an embed
+    # displays bot info in an embedded format
     @commands.command()
     async def botinfo(self, ctx):
         embed = discord.Embed(

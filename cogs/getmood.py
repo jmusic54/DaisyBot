@@ -8,7 +8,7 @@ class GetMood(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # main mood tracking command
+    # command for getting mood entry
     @commands.command()
     async def getmood(self, ctx):
         # mongoDB setup

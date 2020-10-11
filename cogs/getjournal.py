@@ -8,7 +8,7 @@ class GetJournal(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # main mood tracking command
+    # command for getting journal entry
     @commands.command()
     async def getjournal(self, ctx):
         # mongoDB setup

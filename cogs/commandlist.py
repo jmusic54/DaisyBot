@@ -7,7 +7,7 @@ class CommandList(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    # list of commands in an embed
+    # list of commands in an embedded format
     @commands.command()
     async def commandlist(self, ctx):
         embed = discord.Embed(
