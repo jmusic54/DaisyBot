@@ -1,5 +1,5 @@
 # DaisyBot
-My submission for the hackathon KnightHacks 2020, of which I am the sole contributor. DaisyBot is a Discord bot that allows the user to track their mood, and if they choose to, be routinely notified via a ping to do their mood tracking. The bot utilizes the Discord API, discord.py, and MongoDB with PyMongo and the Google Cloud hosting platform. This bot was made at a beginner (no prior experience) level of MongoDB and PyMongo, and a semi-beginner (some prior experience) level of Python, discord.py, and the Discord API.
+My submission for the hackathon KnightHacks 2020, of which I am the sole contributor. DaisyBot is a Discord bot that allows the user to track their mood, write a journal entry, and set a bio. The bot utilizes the Discord API, discord.py, and MongoDB with PyMongo and the Google Cloud hosting platform. This bot was made at a beginner (no prior experience) level of MongoDB and PyMongo, and a semi-beginner (some prior experience) level of Python, discord.py, and the Discord API.
 
 ## Author
 * Joshua Schladt
