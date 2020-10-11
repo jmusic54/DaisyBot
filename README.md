@@ -29,7 +29,7 @@ DaisyBot is a mental health focused bot that allows for discord users to track t
     * Allows the user to write a journal entry and stores it to the database.
 * ```!setbio```
     * Allows the user to write a bio and stores it to the database.
-* ```!getmood/jorunal/bio```
+* ```!getmood/journal/bio```
     * Three different commands that retrieve the mood, journal entry, and bio for the user from the database, depending on which one was inputted.
 
 ## Built With
